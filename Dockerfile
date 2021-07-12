@@ -1,4 +1,4 @@
-FROM octopusdeploy/worker-tools:ubuntu.18.04
+FROM mcr.microsoft.com/dotnet/runtime-deps:3.1.16-focal
 
 LABEL maintainer="Martin Isaksen <norway.martin@gmail.com>"
 
@@ -13,6 +13,7 @@ ADD docker/pact /usr/local/bin/pact
 # TODO: Remove this when it is no longer needed
 
 RUN apt-get update \
+  && apt-get -y install build-essential \
   && apt-get -qq -y install ruby \
 			 ruby-dev \
              ca-certificates \
